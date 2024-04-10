@@ -21,4 +21,8 @@ public class IssueService {
         // 後処理が増えたとする
 //        throw new IllegalStateException("NG");
     }
+
+    public IssueEntity findById(long issueId) {
+        return issueRepository.findByID(issueId);
+    }
 }
