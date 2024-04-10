@@ -25,9 +25,9 @@
 <!--</html>-->
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
 <head>
-    <meta charset="UTF-8">
     <title>課題作成 | 課題管理アプリケーション</title>
 </head>
 <body>
