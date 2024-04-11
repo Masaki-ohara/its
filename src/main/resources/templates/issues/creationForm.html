@@ -1,54 +1,54 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>課題作成 | 課題管理アプリケーション</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>課題作成</h1>-->
-<!--<form action="#" th:action="@{/issues}" th:method="post" th:object="${issueForm}">　-->
-<!--    <div>-->
-<!--        <label for="summaryInput">概要</label>-->
-<!--        <input tyoe="text" id="summaryInput" th:field="*{summary}">-->
-<!--        <p th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}">(error)</p>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <label for="descriptionInput">説明</label>-->
-<!--        <textarea id="descriptionInput" row="10" th:field="*{description}"></textarea>-->
-<!--        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">(error)</p>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <button type="submit">作成</button>-->
-<!--    </div>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
+<!-- HTML文書のDOCTYPEを定義します -->
 <!DOCTYPE html>
+<!-- lang属性を指定し、Thymeleafの名前空間を定義します -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+
+<!-- HTML文書のヘッダー部分が始まります -->
 <head>
+    <!-- 文書のタイトルを定義します -->
     <title>課題作成 | 課題管理アプリケーション</title>
 </head>
+
+<!-- HTML文書の本文部分が始まります -->
 <body>
+<!-- h1要素で見出しを表示します -->
 <h1 class="mt-3">課題作成</h1>
+<!-- フォームを定義します -->
 <form action="#" th:action="@{/issues}" th:method="post" th:object="${issueForm}">
+    <!-- 概要入力フィールドを定義します -->
     <div class="mt-3">
+        <!-- ラベルを表示します -->
         <label for="summaryInput" class="form-label">概要</label>
+        <!-- テキスト入力フィールドを表示します -->
         <input type="text" id="summaryInput" th:field="*{summary}" class="form-control"
                th:classappend="${#fields.hasErrors('summary')} ? is-invalid">
+<!--        th:classappend="${#fields.hasErrors('summary')} ? is-invalid": -->
+<!--        入力フィールドのクラスを動的に設定します。#fields.hasErrors('summary')は、Thymeleafの組み込みオブジェクトを使用して、-->
+<!--        summaryフィールドにエラーがあるかどうかをチェックします。エラーがある場合は、-->
+<!--        is-invalidクラスが追加され、入力フィールドが赤く表示されます。-->
+        <!-- 入力エラーがある場合にエラーメッセージを表示します -->
         <p class="invalid-feedback" th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}">(error)</p>
     </div>
+    <!-- 説明入力フィールドを定義します -->
     <div class="mt-3">
+        <!-- ラベルを表示します -->
         <label for="descriptionInput" class="form-label">説明</label>
+        <!-- テキストエリアを表示します -->
         <textarea id="descriptionInput" row="10" th:field="*{description}" class="form-control"
                   th:classappend="${#fields.hasErrors('description')} ? is-invalid"></textarea>
+        <!-- 入力エラーがある場合にエラーメッセージを表示します -->
         <p class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">(error)</p>
     </div>
+    <!-- フォーム送信ボタンを定義します -->
     <div class="mt-3">
+        <!-- 作成ボタンを表示します -->
         <button type="submit" class="btn btn-primary">作成</button>
+        <!-- キャンセルボタンを表示します -->
         <a href="./list.html" th:href="@{/issues}" class="btn btn-secondary">キャンセル</a>
     </div>
 </form>
+<!-- HTML文書の本文部分の終わりです -->
 </body>
+<!-- HTML文書の終わりです -->
 </html>
